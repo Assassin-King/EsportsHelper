@@ -12,9 +12,10 @@ jobs:
           sudo dpkg -i google-chrome-stable_current_amd64.deb
           sudo apt-get install -f
 
-      - name: Open Chrome in headless mode
-        run: |
-          google-chrome-stable --headless --disable-gpu  https://www.google.com
+      - name: Set up Chrome and WebDriver
+        uses: robotology/setup-webdriver@v1
+        with:
+         browser: chrome
 
       - name: Checkout code
         uses: actions/checkout@v2  
