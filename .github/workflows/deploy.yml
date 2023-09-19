@@ -12,8 +12,9 @@ jobs:
           sudo dpkg -i google-chrome-stable_current_amd64.deb
           sudo apt-get install -f
 
-      - name: Open Chrome
-        run: google-chrome-stable
+      - name: Open Chrome in headless mode
+        run: |
+          google-chrome-stable --headless --disable-gpu  https://www.google.com
 
       - name: Checkout code
         uses: actions/checkout@v2  
