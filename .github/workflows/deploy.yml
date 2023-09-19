@@ -6,25 +6,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Chrome
-        run: |
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo dpkg -i google-chrome-stable_current_amd64.deb
-            sudo apt-get -f install
-
-#      - name: Start Chrome
-#        run: google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 https://example.com
+      - name: Setup Chrome WebDriver
+        uses: nanasess/setup-webdriver@v1
 
       - name: Checkout code
-        uses: actions/checkout@v2  #自动将代码仓库中的内容（包括分支、标签等）检出到工作流程运行的虚拟机或容器中，以供后续步骤使用。
+        uses: actions/checkout@v2  
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  # 表示使用最新的 Python 3 版本, 可以替换为你希望使用的Python版本
+          python-version: 3.x 
 
       - name: Install dependencies
-        run: pip install -r requirements.txt  # 如果有依赖项，请确保在仓库中有一个requirements.txt文件，并在此处安装依赖项 ，如果不是在根目录，可以用config/requirements.txt 这种
+        run: pip install -r requirements.txt  
 
       - name: Run python
         run: python main.py
