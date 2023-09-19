@@ -8,17 +8,9 @@ jobs:
     steps:
       - name: Install Chrome and WebDriver
         run: |
-         sudo apt-get update
-         sudo apt-get install -y libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-0 libxss1 libappindicator3-1
-         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-         sudo dpkg -i google-chrome-stable_current_amd64.deb
-         sudo apt-get install -f
-         wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
-         unzip chromedriver_linux64.zip
-         sudo mv chromedriver /usr/local/bin/chromedriver
-         sudo chown root:root /usr/local/bin/chromedriver
-         sudo chmod +x /usr/local/bin/chromedriver
-
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          
       - name: Checkout code
         uses: actions/checkout@v2  
 
